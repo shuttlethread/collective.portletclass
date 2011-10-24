@@ -1,0 +1,6 @@
+<layers>
+  <layer
+    name="collective.portletclass"
+    interface="collective.portletclass.interfaces.ICollectivePortletClassLayer"
+    />
+</layers>

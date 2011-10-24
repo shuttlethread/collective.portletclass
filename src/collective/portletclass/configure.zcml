@@ -1,0 +1,46 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:monkey="http://namespaces.plone.org/monkey"
+    i18n_domain="collective.portletclass">
+
+    <includeDependencies package="." />
+
+    <genericsetup:registerProfile
+        name="default"
+        title="collective.portletclass"
+        directory="profiles/default"
+        description='Adds a "Portlet CSS class" field to portlet add/edit forms to set additional CSS classes on the portlet wrapper.'
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        />
+
+    <browser:jbot
+        directory="templates"
+        layer=".interfaces.ICollectivePortletClassLayer"
+         />
+
+    <monkey:patch
+        description="Add CSS class field to portlets."
+        class="plone.app.portlets.browser.formhelper.AddForm"
+        original="__init__"
+        replacement=".patch.collective_portletclass__init__"
+        />
+
+    <monkey:patch
+        description="Add CSS class field to portlets."
+        class="plone.app.portlets.browser.formhelper.AddForm"
+        original="createAndAdd"
+        replacement=".patch.collective_portletclass_createAndAdd"
+        />
+
+    <monkey:patch
+        description="Add CSS class field to portlets."
+        class="plone.app.portlets.browser.formhelper.EditForm"
+        original="__init__"
+        replacement=".patch.collective_portletclass__init__"
+        />
+
+    <adapter factory=".patch.CollectivePortletClass" />
+
+</configure>
