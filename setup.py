@@ -35,6 +35,7 @@ setup(
         'plone.browserlayer',
         'setuptools',
         'z3c.jbot',
+        'zope.component',
         'zope.event',
         'zope.formlib',
         'zope.i18nmessageid',
@@ -44,7 +45,6 @@ setup(
         ],
     extras_require = {
         'test': [
-            'plone.app.testing',
             ],
         },
     entry_points="""
