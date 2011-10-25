@@ -25,7 +25,7 @@ def collective_portletclass_createAndAdd(self, data):
         value = data[portletclass_field.__name__]
         del data[portletclass_field.__name__]
         ob = self.create(data)
-        field.set(ob, value)
+        portletclass_field.set(ob, value)
     else:
         ob = self.create(data)
     zope.event.notify(ObjectCreatedEvent(ob))
